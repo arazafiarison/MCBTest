@@ -6,8 +6,10 @@ import com.mcb.test.Test.model.enumeration.authentication.CurrencyEnum;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @Document
@@ -23,4 +25,6 @@ public class Transaction {
     private String paymentDetails;
     private String cardDetails;
     private RegionEmbeded region;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date creationDate;
 }
