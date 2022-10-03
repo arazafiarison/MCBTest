@@ -22,7 +22,7 @@ public class RegionAPIController {
      * Retrieve all regions list
      * @return
      */
-    @GetMapping()
+    @GetMapping("/findAll")
     private ResponseEntity<List<RegionListElementDTO>> getAllRegions() {
         return new ResponseEntity<List<RegionListElementDTO>>(this.regionService.getAllRegions(), HttpStatus.OK);
     }

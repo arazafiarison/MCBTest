@@ -2,9 +2,11 @@ package com.mcb.test.Test.service.demodata;
 
 import com.mcb.test.Test.model.collection.authentication.Login;
 import com.mcb.test.Test.model.collection.authentication.RoleEmbeded;
+import com.mcb.test.Test.model.collection.location.Region;
 import com.mcb.test.Test.model.collection.user.User;
 import com.mcb.test.Test.model.enumeration.authentication.RoleEnum;
 import com.mcb.test.Test.repository.authentication.AuthRepository;
+import com.mcb.test.Test.repository.region.RegionRepository;
 import com.mcb.test.Test.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -25,6 +27,8 @@ public class DemoDataService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RegionRepository regionRepository;
 
     @EventListener
     @Transactional
@@ -51,6 +55,23 @@ public class DemoDataService {
 
             login.setUserId(user.getId());
             authRepository.save(login);
+        }
+        if (!this.regionRepository.existsByRegion("Port Louis")) {
+            Region regionTemp = new Region();
+            regionTemp.setRegion("Port Louis");
+            this.regionRepository.save(regionTemp);
+
+            regionTemp = new Region();
+            regionTemp.setRegion("Curepipe");
+            this.regionRepository.save(regionTemp);
+
+            regionTemp = new Region();
+            regionTemp.setRegion("Vacoas");
+            this.regionRepository.save(regionTemp);
+
+            regionTemp = new Region();
+            regionTemp.setRegion("Port Mathurin");
+            this.regionRepository.save(regionTemp);
         }
     }
 }
