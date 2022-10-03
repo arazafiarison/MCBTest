@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransactionService {
@@ -34,5 +35,13 @@ public class TransactionService {
         } else {
             return transactions.stream().toList();
         }
+    }
+
+    public List<Transaction> findByReference(String reference) {
+        Optional<List<Transaction>> transactions = this.transactionRepository.findByReferenceContaining(reference);
+        if (transactions.isPresent()) {
+            return transactions.get();
+        }
+        return null;
     }
 }

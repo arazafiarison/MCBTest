@@ -30,4 +30,9 @@ public class TransactionAPIController {
         log.info("test : {}", pagination.toString());
         return new ResponseEntity<List<Transaction>>(this.transactionService.findAll(pagination), HttpStatus.OK);
     }
+
+    @GetMapping("/findByReference")
+    public ResponseEntity<List<Transaction>> findByReference(@RequestParam("reference") String reference) {
+        return new ResponseEntity<List<Transaction>>(this.transactionService.findByReference(reference), HttpStatus.OK);
+    }
 }

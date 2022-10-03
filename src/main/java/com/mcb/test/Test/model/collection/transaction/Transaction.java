@@ -1,6 +1,5 @@
 package com.mcb.test.Test.model.collection.transaction;
 
-import com.mcb.test.Test.model.collection.bank.BankEmbeded;
 import com.mcb.test.Test.model.collection.location.RegionEmbeded;
 import com.mcb.test.Test.model.enumeration.authentication.CurrencyEnum;
 import lombok.Data;
@@ -20,7 +19,7 @@ public class Transaction {
     private Customer customer;
     private BigDecimal transferAmount;
     private CurrencyEnum transferCurrency;
-    private BankEmbeded beneficiaryBank;
+    private String beneficiaryBank;
     private String beneficiaryAccountNumber;
     private String paymentDetails;
     private String cardDetails;
