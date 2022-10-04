@@ -25,7 +25,7 @@ public class TransactionAPIController {
         return new ResponseEntity<>(this.transactionService.saveTransaction(newTransaction), HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/findAll")
+    @GetMapping("/findAll")
     public ResponseEntity<List<Transaction>> findAll() {
         return new ResponseEntity<List<Transaction>>(this.transactionService.findAll(), HttpStatus.OK);
     }
