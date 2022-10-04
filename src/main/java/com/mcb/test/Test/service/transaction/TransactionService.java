@@ -23,17 +23,12 @@ public class TransactionService {
         return this.transactionRepository.save(transaction);
     }
 
-    public List<Transaction> findAll(PaginationDTO pagination) {
-        Pageable pageable = PageRequest.of(
-                pagination.getPageIndex(),
-                pagination.getPageSize(),
-                Sort.by("creationDate").descending()
-        );
-        Page<Transaction> transactions = this.transactionRepository.findAll(pageable);
-        if (transactions.isEmpty()) {
+    public List<Transaction> findAll() {
+        List<Transaction> transactions = this.transactionRepository.findAll();
+        if (transactions == null) {
           return null;
         } else {
-            return transactions.stream().toList();
+            return transactions;
         }
     }
 

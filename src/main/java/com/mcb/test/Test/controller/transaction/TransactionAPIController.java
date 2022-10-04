@@ -26,9 +26,8 @@ public class TransactionAPIController {
     }
 
     @PostMapping("/findAll")
-    public ResponseEntity<List<Transaction>> findAll(@RequestBody PaginationDTO pagination) {
-        log.info("test : {}", pagination.toString());
-        return new ResponseEntity<List<Transaction>>(this.transactionService.findAll(pagination), HttpStatus.OK);
+    public ResponseEntity<List<Transaction>> findAll() {
+        return new ResponseEntity<List<Transaction>>(this.transactionService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/findByReference")
