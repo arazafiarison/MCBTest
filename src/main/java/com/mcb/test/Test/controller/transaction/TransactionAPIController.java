@@ -22,7 +22,7 @@ public class TransactionAPIController {
 
     @PostMapping
     public ResponseEntity<Transaction> save(@RequestBody Transaction newTransaction) {
-        return new ResponseEntity<>(this.transactionService.saveTransaction(newTransaction), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(this.transactionService.saveTransaction(newTransaction), HttpStatus.CREATED);
     }
 
     @GetMapping("/findAll")

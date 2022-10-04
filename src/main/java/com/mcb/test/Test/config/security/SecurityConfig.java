@@ -53,6 +53,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .headers().frameOptions().disable()
+                .and()
                 .cors()
                 .and()
                 .csrf()
@@ -71,7 +73,7 @@ public class SecurityConfig {
                         "/**/*.css",
                         "/**/*.js")
                 .permitAll()
-                .antMatchers("/api/authentication/signIn")
+                .antMatchers("/api/authentication/signIn", "/h2-console/**", "/api/h2/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
